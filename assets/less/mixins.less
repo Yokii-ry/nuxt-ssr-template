@@ -1,0 +1,122 @@
+/******************** 文本样式控制 ********************/
+
+// 单行溢出隐藏
+.text-ellipsis() {
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 多行溢出隐藏
+.text-ellipsis-multi-line(@line: 2) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+// 垂直居中
+.text-vertical-align(@height: 0) {
+  line-height: @height;
+  height: @height;
+}
+
+/******************** 对齐样式控制 ********************/
+
+// 单个块级元素居中
+.block-center() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// flex 对齐
+.flex(@horizontal: center, @vertical: center, @direction: row) {
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @horizontal;
+  align-items: @vertical;
+}
+
+// 通用form文本样式
+.form-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(127, 169, 61, 1);
+}
+
+/******************** 动画样式控制 ********************/
+
+// 动画过渡，注意；为了提升渲染性能，建议指明使用动画的属性
+.transition(
+  @property: all,
+  @duration: 0.2s,
+  @timing-function: ease-in-out,
+  @delay: 0s
+) {
+  transition: @property @duration @timing-function @delay;
+}
+
+.cb-flex {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cb-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.cb-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.cb-col-center {
+  align-items: center;
+}
+
+.cb-col-top {
+  align-items: flex-start;
+}
+
+.cb-col-bottom {
+  align-items: flex-end;
+}
+
+.cb-row-center {
+  justify-content: center;
+}
+
+.cb-row-left {
+  justify-content: flex-start;
+}
+
+.cb-row-right {
+  justify-content: flex-end;
+}
+
+.cb-row-between {
+  justify-content: space-between;
+}
+
+.cb-row-around {
+  justify-content: space-around;
+}
+
+.cb-text-left {
+  text-align: left;
+}
+
+.cb-text-center {
+  text-align: center;
+}
+
+.cb-text-right {
+  text-align: right;
+}
+
+.cb-flex-col {
+  display: flex;
+  flex-direction: column;
+}

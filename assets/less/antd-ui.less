@@ -1,0 +1,39 @@
+// 覆盖 Ant Design 默认样式
+
+/******************** 模态窗样式 ********************/
+
+.ant-modal-mask {
+  z-index: 1001 !important;
+}
+
+.ant-modal-confirm {
+  .ant-modal-confirm-btns {
+    margin-top: 12px !important;
+  }
+}
+
+.ant-modal-wrap {
+  z-index: 1001 !important;
+
+  .ant-modal-header {
+    .ant-modal-title {
+      max-width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+/***************** 通知提醒内容样式 *****************/
+
+.ant-notification-notice-description {
+  word-break: break-all !important;
+}
+
+/***************** 表格列字符强制断词 *****************/
+.ant-table-row{
+  > td{
+    word-break: break-all;
+  }
+}

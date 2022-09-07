@@ -1,0 +1,66 @@
+{
+  "name": "nuxt-typescript",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts --report",
+    "dev:prod": "cross-env NODE_ENV=production nuxt-ts --report",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .eslintignore .gitignore .",
+    "lint": "yarn lint:js",
+    "fix": "eslint --fix --ext .js,.vue --ignore-path .eslintignore ."
+  },
+  "dependencies": {
+    "@antv/g2plot": "^1.1.27",
+    "@nuxt/typescript-runtime": "^1.0.0",
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/proxy": "^2.0.1",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "ant-design-vue": "^1.6.4",
+    "cookie-universal-nuxt": "^2.1.4",
+    "cross-env": "^7.0.2",
+    "detect-browser": "^5.1.1",
+    "file-saver": "^2.0.2",
+    "nuxt": "^2.14.0",
+    "nuxt-property-decorator": "^2.7.2",
+    "qiniu-js": "^3.1.1",
+    "store": "^2.0.12",
+    "v-viewer": "^1.5.1",
+    "vue-clipboard2": "^0.3.1",
+    "vue-qr": "^2.1.0",
+    "vue-tsx-support": "^2.3.3",
+    "vuedraggable": "^2.23.0",
+    "vuex-module-decorators": "^0.17.0"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.0",
+    "@nuxt/typescript-build": "^2.0.2",
+    "@nuxtjs/eslint-config": "^3.1.0",
+    "@nuxtjs/eslint-config-typescript": "^3.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/moment": "^1.6.1",
+    "@types/webpack-env": "^1.15.2",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "fork-ts-checker-webpack-plugin": "^6.0.5",
+    "husky": "^2.6.0",
+    "less": "^3.12.2",
+    "less-loader": "^4.1.0",
+    "nuxt-windicss": "^2.4.3",
+    "prettier": "1.16.4",
+    "ts-import-plugin": "^1.6.6",
+    "ts-loader": "^8.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}

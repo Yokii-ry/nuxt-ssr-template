@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>图文编辑</title>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #loading-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+    }
+
+    .spin-dots {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      transform: rotate(45deg);
+      animation: rotate 1.2s infinite linear;
+    }
+
+    .hint {
+      margin-top: 12px;
+      color: #fff;
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(405deg);
+      }
+    }
+
+    .spin-dots i {
+      display: block;
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 100%;
+      background-color: #1890ff;
+      transform: scale(0.9);
+      opacity: 0.3;
+      transform-origin: 50% 50%;
+      animation: spin-move 1s infinite linear alternate;
+    }
+
+    @keyframes spin-move {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .spin-dots i:nth-child(1) {
+      left: 0;
+      top: 0;
+    }
+
+    .spin-dots i:nth-child(2) {
+      right: 0;
+      top: 0;
+      animation-delay: 0.4s;
+    }
+
+    .spin-dots i:nth-child(3) {
+      right: 0;
+      bottom: 0;
+      animation-delay: 0.8s;
+    }
+
+    .spin-dots i:nth-child(4) {
+      left: 0;
+      bottom: 0;
+      animation-delay: 1.2s;
+    }
+
+    #editor135-iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: none;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading-mask">
+    <span class="spin-dots">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+    <p class="hint">正在加载图文，请耐心等候</p>
+  </div>
+  <iframe id="editor135-iframe" src="//www.135editor.com/beautify_editor?callback=true&appkey=5c653191-3d74-4f2f-9c44-0896ac10c65d"></iframe>
+
+  <script type="text/javascript" src="../internal.js"></script>
+
+  <script>
+    var editor135Iframe = document.getElementById('editor135-iframe');
+
+    window.onload = function () {
+      setTimeout(function () {
+        document.getElementById('loading-mask').style.display = 'none';
+        editor135Iframe.contentWindow.postMessage(editor.getContent(), '*');
+      }, 3000);
+    };
+    document.addEventListener("mousewheel", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+    window.addEventListener('message', function (event) {
+      if (typeof event.data !== 'string') return;
+      editor.setContent(event.data);
+      dialog.close();
+    }, false);
+  </script>
+</body>
+
+</html>
